@@ -1,0 +1,30 @@
+{
+  "name": "blocktron-cli",
+  "version": "1.0.0",
+  "description": "A CLI tool to generate a custom Blocktron instance.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Blocktron-Project/blocktron-cli.git"
+  },
+  "keywords": [
+    "Blocktron",
+    "blocktron-lib",
+    "blocktron-node",
+    "blocktron-explorer",
+    "javascript",
+    "nodejs",
+    "blockchain",
+    "dapps",
+    "cryptocurrency"
+  ],
+  "author": "Sandeep Vattapparambil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Blocktron-Project/blocktron-cli/issues"
+  },
+  "homepage": "https://github.com/Blocktron-Project/blocktron-cli#readme"
+}
