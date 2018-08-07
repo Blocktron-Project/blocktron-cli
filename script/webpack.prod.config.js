@@ -14,6 +14,16 @@ module.exports = {
      */
     target: 'node',
     /**
+     * Configuration settings
+     */
+    plugins: [
+        new webpack.BannerPlugin({
+            banner: '#!/usr/bin/env node',
+            raw: true
+        })
+    ],
+
+    /**
      * set minification flag
      */
     optimization: {
