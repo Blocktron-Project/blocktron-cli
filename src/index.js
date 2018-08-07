@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  * Blocktron CLI
  * A CLI tool to generate a blocktron instance.
@@ -14,3 +12,5 @@
 'use strict';
 
  //imports
+
+ export default blocktron;

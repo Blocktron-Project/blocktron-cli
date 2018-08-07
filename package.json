@@ -4,6 +4,7 @@
   "description": "A CLI tool to generate a custom Blocktron instance.",
   "main": "index.js",
   "scripts": {
+    "build": "build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,5 +27,14 @@
   "bugs": {
     "url": "https://github.com/Blocktron-Project/blocktron-cli/issues"
   },
-  "homepage": "https://github.com/Blocktron-Project/blocktron-cli#readme"
+  "homepage": "https://github.com/Blocktron-Project/blocktron-cli#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "webpack": "^4.16.5"
+  }
 }
