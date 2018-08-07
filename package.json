@@ -1,8 +1,13 @@
 {
   "name": "blocktron-cli",
   "version": "1.0.0",
+  "private": false,
   "description": "A CLI tool to generate a custom Blocktron instance.",
   "main": "dist/app.bundle.js",
+  "preferGlobal": true,
+  "bin": {
+    "blocktron": "./dist/app.bundle.js"
+  },
   "scripts": {
     "build-prod": "webpack --config=./script/webpack.config.js --env.production",
     "build-dev": "webpack --config=./script/webpack.config.js",
