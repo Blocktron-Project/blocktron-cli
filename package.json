@@ -44,5 +44,11 @@
     "babel-register": "^6.26.0",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "async": "^2.6.1",
+    "chalk": "^2.4.1",
+    "figlet": "^1.2.0",
+    "replace-in-file": "^3.4.0"
   }
 }
