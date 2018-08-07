@@ -1,4 +1,4 @@
-<img src="logo.png" width="600">
+<img src="logo-cli.png">
 
 # blocktron-cli
 A CLI tool to generate a custom Blocktron instance.
