@@ -19,13 +19,13 @@ module.exports = {
     optimization: {
         minimize: true
     },
-    entry: '../bin/blocktron-cli.js',
+    entry: path.resolve(__dirname, '../','bin/blocktron-cli.js'),
     output: {
-        path: path.resolve(__dirname, '.', 'dist'),
+        path: path.resolve(__dirname, '../', 'dist'),
         filename: 'app.bundle.js'
     },
     module: {
-        loaders: [{
+        rules: [{
             test: /\.js$/,
             loader: 'babel-loader',
             exclude: /node_modules/
