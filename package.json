@@ -4,7 +4,7 @@
   "description": "A CLI tool to generate a custom Blocktron instance.",
   "main": "dist/app.bundle.js",
   "scripts": {
-    "build": "webpack --config=./build/webpack.prod.config.js",
+    "build": "webpack --config=./script/webpack.prod.config.js",
     "start": "node ./bin/blocktron-cli.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
