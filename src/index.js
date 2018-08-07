@@ -6,9 +6,27 @@
  * Website: www.sandeepv.in
  */
 
- /**
-  * Use strict mode
-  */
+/**
+ * Use strict mode
+ */
 'use strict';
 
- //imports
+import _BtConfig from '../config/blocktron';
+
+/**
+ * Log - console.log instance
+ */
+const log = console.log;
+
+/**
+ * @name isWindows
+ * Helper function to check the current platform for Windows/Unix-ish.
+ * @returns {Boolean} - Returns true if Windows, else false.
+ */
+const isWindows = () => {
+  if (/^win/i.test(process.platform)) {
+    return true;
+  } else {
+    return false;
+  }
+}
