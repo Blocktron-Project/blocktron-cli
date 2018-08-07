@@ -145,7 +145,7 @@ var _child_process = __webpack_require__(9);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
- * Log - console.log instance
+ * Log - console.log instance augmented with chalk
  */
 
 
@@ -162,7 +162,28 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * async - utilities library for async operations
  */
-var log = console.log;
+var log = function log() {
+  var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var level = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+
+  var levelClass = function levelClass() {
+    var level = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'default';
+
+
+    var classNames = {
+      'default': 'white',
+      'info': 'blue',
+      'success': 'green',
+      'warn': 'yellow',
+      'error': 'red'
+    };
+    return classNames[level] || classNames['default'];
+  };
+
+  var msg = '' + levelClass(level) + message;
+  console.log(msg);
+};
 
 /**
  * @name isWindows
@@ -240,8 +261,9 @@ var run = function run(script) {
   /**
    * render the logo in bold yellow and version in blue
    */
-  log(_chalk2.default.yellow.bold(data));
-  log(_chalk2.default.blue('v' + _blocktron2.default.version));
+  // log(chalk.yellow.bold(data));
+  // log(chalk.blue(`v${_BtConfig.version}`));
+  log('hello', 'green');
 });
 
 /***/ }),

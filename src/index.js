@@ -52,9 +52,25 @@ import {
 } from 'child_process';
 
 /**
- * Log - console.log instance
+ * Log - console.log instance augmented with chalk
  */
-const log = console.log;
+const log = (message = '', level = '') => {
+
+  let levelClass = (level = 'default') => {
+
+    let classNames = {
+      'default': 'white',
+      'info': 'blue',
+      'success': 'green',
+      'warn': 'yellow',
+      'error': 'red'
+    };
+    return classNames[level] || classNames['default'];
+  };
+
+  let msg = `${levelClass(level)}`+(message);
+  console.log(msg);
+};
 
 /**
  * @name isWindows
@@ -112,6 +128,7 @@ figlet(_BtConfig.name, figletConfig, (err, data) => {
   /**
    * render the logo in bold yellow and version in blue
    */
-  log(chalk.yellow.bold(data));
-  log(chalk.blue(`v${_BtConfig.version}`));
+  // log(chalk.yellow.bold(data));
+  // log(chalk.blue(`v${_BtConfig.version}`));
+  log('hello', 'green');
 });
