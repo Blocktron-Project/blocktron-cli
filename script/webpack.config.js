@@ -3,6 +3,7 @@
  */
 const path = require('path');
 const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = (env) => {
 
@@ -15,6 +16,12 @@ module.exports = (env) => {
          * set target as server (node)
          */
         target: 'node',
+
+        /**
+         * ignore all modules in node_modules folder
+         */
+        externals: [nodeExternals()],
+        
         /**
          * Configuration settings
          */
