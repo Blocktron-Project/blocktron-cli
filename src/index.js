@@ -12,5 +12,3 @@
 'use strict';
 
  //imports
-
- export default blocktron;
