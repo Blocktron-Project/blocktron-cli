@@ -272,7 +272,7 @@ var run = function run(script) {
 
   if (process.argv[2]) {} else {
     log('\nUsage:', 'info');
-    log('blocktron <project-name>', 'info');
+    log('blocktron <project-name> [options]', 'info');
     log('\nOptions:', 'info');
     log('     -h  --help              show cli help', 'info');
     log('     -v  --version           get cli version', 'info');
