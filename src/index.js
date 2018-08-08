@@ -52,24 +52,32 @@ import {
 } from 'child_process';
 
 /**
- * Log - console.log instance augmented with chalk
+ * A helper function to augment console.log with chalk
+ * @name log
+ * @param {String} message - The message string
+ * @param {String} level - The type of message
  */
 const log = (message = '', level = '') => {
-
-  let levelClass = (level = 'default') => {
-
-    let classNames = {
-      'default': 'white',
-      'info': 'blue',
-      'success': 'green',
-      'warn': 'yellow',
-      'error': 'red'
-    };
-    return classNames[level] || classNames['default'];
-  };
-
-  let msg = `${levelClass(level)}`+(message);
-  console.log(msg);
+  switch (level) {
+    case 'default':
+      console.log(chalk.white(message));
+      break;
+    case 'info':
+      console.log(chalk.blue(message));
+      break;
+    case 'success':
+      console.log(chalk.green(message));
+      break;
+    case 'warn':
+      console.log(chalk.yellow.bold(message));
+      break;
+    case 'error':
+      console.log(chalk.red.bold(message));
+      break;
+    default:
+      console.log(message);
+  }
+  return;
 };
 
 /**
@@ -122,13 +130,12 @@ const run = (script) => {
  */
 figlet(_BtConfig.name, figletConfig, (err, data) => {
   if (err) {
-    log(chalk.red('logo rendering failed!: ', err));
+    log('logo rendering failed!: ' + err, 'error');
   }
 
   /**
    * render the logo in bold yellow and version in blue
    */
-  // log(chalk.yellow.bold(data));
-  // log(chalk.blue(`v${_BtConfig.version}`));
-  log('hello', 'green');
+  log(data, 'warn');
+  log(_BtConfig.version, 'info');
 });

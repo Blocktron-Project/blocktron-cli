@@ -166,23 +166,26 @@ var log = function log() {
   var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
   var level = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
-
-  var levelClass = function levelClass() {
-    var level = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'default';
-
-
-    var classNames = {
-      'default': 'white',
-      'info': 'blue',
-      'success': 'green',
-      'warn': 'yellow',
-      'error': 'red'
-    };
-    return classNames[level] || classNames['default'];
-  };
-
-  var msg = '' + levelClass(level) + message;
-  console.log(msg);
+  switch (level) {
+    case 'default':
+      console.log(_chalk2.default.white(message));
+      break;
+    case 'info':
+      console.log(_chalk2.default.blue(message));
+      break;
+    case 'success':
+      console.log(_chalk2.default.green(message));
+      break;
+    case 'warn':
+      console.log(_chalk2.default.yellow.bold(message));
+      break;
+    case 'error':
+      console.log(_chalk2.default.red.bold(message));
+      break;
+    default:
+      console.log(message);
+  }
+  return;
 };
 
 /**
@@ -255,15 +258,14 @@ var run = function run(script) {
  */
 (0, _figlet2.default)(_blocktron2.default.name, _figlet4.default, function (err, data) {
   if (err) {
-    log(_chalk2.default.red('logo rendering failed!: ', err));
+    log('logo rendering failed!: ' + err, 'error');
   }
 
   /**
    * render the logo in bold yellow and version in blue
    */
-  // log(chalk.yellow.bold(data));
-  // log(chalk.blue(`v${_BtConfig.version}`));
-  log('hello', 'green');
+  log(data, 'warn');
+  log(_blocktron2.default.version, 'info');
 });
 
 /***/ }),
