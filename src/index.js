@@ -126,7 +126,7 @@ const run = (script) => {
 }
 
 /**
- * Bootstrap the generator after rendering the logo
+ * Bootstrap the cli after rendering the logo
  */
 figlet(_BtConfig.name, figletConfig, (err, data) => {
   if (err) {
@@ -137,7 +137,7 @@ figlet(_BtConfig.name, figletConfig, (err, data) => {
    * render the logo in bold yellow and version in blue
    */
   log(data, 'warn');
-  log(_BtConfig.version, 'info');
+  log(`v${_BtConfig.version}`, 'info');
 
   if (process.argv[2]) {
 
@@ -145,6 +145,7 @@ figlet(_BtConfig.name, figletConfig, (err, data) => {
     log('\nUsage:', 'info');
     log('blocktron <project-name>', 'info');
     log('\nOptions:', 'info');
-    log('-h | --help              show cli help');
+    log('     -h  --help              show cli help', 'info');
+    log('     -v  --version           get cli version', 'info');
   }
 });

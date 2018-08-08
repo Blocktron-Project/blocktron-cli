@@ -257,7 +257,7 @@ var run = function run(script) {
 };
 
 /**
- * Bootstrap the generator after rendering the logo
+ * Bootstrap the cli after rendering the logo
  */
 (0, _figlet2.default)(_blocktron2.default.name, _figlet4.default, function (err, data) {
   if (err) {
@@ -268,12 +268,14 @@ var run = function run(script) {
    * render the logo in bold yellow and version in blue
    */
   log(data, 'warn');
-  log(_blocktron2.default.version, 'info');
+  log('v' + _blocktron2.default.version, 'info');
 
   if (process.argv[2]) {} else {
     log('\nUsage:', 'info');
     log('blocktron <project-name>', 'info');
     log('\nOptions:', 'info');
+    log('     -h  --help              show cli help', 'info');
+    log('     -v  --version           get cli version', 'info');
   }
 });
 
@@ -291,7 +293,7 @@ Object.defineProperty(exports, "__esModule", {
  * Application configuration object
  */
 var _BtConfig = {
-  name: 'Blocktron Generator',
+  name: 'Blocktron  cli',
   version: '1.0.0'
 };
 
@@ -334,13 +336,18 @@ module.exports = require("figlet");
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
+/**
+ * Figlet configuration object
+ * @see {@link https://www.npmjs.com/package/figlet#font-options | Figlet-NPM}
+ */
 var figletConfig = {
-    font: 'Big',
-    horizontalLayout: 'default',
-    verticalLayout: 'default'
+  font: 'Big',
+  horizontalLayout: 'fitted',
+  verticalLayout: 'default'
 };
+
 exports.default = figletConfig;
 
 /***/ }),
