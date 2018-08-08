@@ -2,7 +2,7 @@
  * Application configuration object
  */
 const _BtConfig = {
-    name: 'Blocktron Generator',
+    name: 'Blocktron  cli',
     version: '1.0.0'
 };
 
