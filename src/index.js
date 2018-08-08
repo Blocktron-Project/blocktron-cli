@@ -138,4 +138,13 @@ figlet(_BtConfig.name, figletConfig, (err, data) => {
    */
   log(data, 'warn');
   log(_BtConfig.version, 'info');
+
+  if (process.argv[2]) {
+
+  } else {
+    log('\nUsage:', 'info');
+    log('blocktron <project-name>', 'info');
+    log('\nOptions:', 'info');
+    log('-h | --help              show cli help');
+  }
 });

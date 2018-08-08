@@ -145,7 +145,10 @@ var _child_process = __webpack_require__(9);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
- * Log - console.log instance augmented with chalk
+ * A helper function to augment console.log with chalk
+ * @name log
+ * @param {String} message - The message string
+ * @param {String} level - The type of message
  */
 
 
@@ -266,6 +269,12 @@ var run = function run(script) {
    */
   log(data, 'warn');
   log(_blocktron2.default.version, 'info');
+
+  if (process.argv[2]) {} else {
+    log('\nUsage:', 'info');
+    log('blocktron <project-name>', 'info');
+    log('\nOptions:', 'info');
+  }
 });
 
 /***/ }),
