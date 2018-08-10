@@ -256,30 +256,46 @@ var run = function run(script) {
   });
 };
 
-/**
- * Bootstrap the cli after rendering the logo
- */
-(0, _figlet2.default)(_blocktron2.default.name, _figlet4.default, function (err, data) {
-  if (err) {
-    log('logo rendering failed!: ' + err, 'error');
-  }
-
+if (process.argv.slice(2).length !== 0) {
+  var option = process.argv.slice(2);
+  console.log(option);
+  // switch (option) {
+  //   case '-he':
+  //     log('Help', 'info');
+  //     break;
+  //   case '--help':
+  //     log('Help', 'info');
+  //   case '-v':
+  //     log(`v${_BtConfig.version}`, 'info');
+  //     break;
+  //   case '--version':
+  //     log(`v${_BtConfig.version}`, 'info');
+  //     break;
+  //   case 'default':
+  //     break;
+  // }
+} else {
   /**
-   * render the logo in bold yellow and version in blue
+   * Bootstrap the cli after rendering the logo
    */
-  log(data, 'warn');
-  log('v' + _blocktron2.default.version, 'info');
+  (0, _figlet2.default)(_blocktron2.default.name, _figlet4.default, function (err, data) {
+    if (err) {
+      log('logo rendering failed!: ' + err, 'error');
+    }
 
-  if (process.argv[2]) {} else {
+    /**
+     * render the logo in bold yellow and version in blue
+     */
+    log(data, 'warn');
+    log('v' + _blocktron2.default.version, 'info');
     log('\nUsage:', 'info');
-    log('blocktron [options]', 'info');
-    log('\nOptions:', 'info');
-    log('     -h  --help              show cli help', 'info');
-    log('     -v  --version           get cli version', 'info');
-    log('     .                       generate a new blocktron-node instance in the current directory', 'info');
-    log('     <project-name>          generate a new blocktron-node instance with the project name passed in', 'info');
-  }
-});
+    log('blocktron [commands]', 'info');
+    log('\nAvailable Commands:', 'info');
+    log('     help                 show cli help', 'info');
+    log('     version              get cli version', 'info');
+    log('     .                    generate a new blocktron-node instance in the current directory', 'info');
+  });
+}
 
 /***/ }),
 /* 2 */

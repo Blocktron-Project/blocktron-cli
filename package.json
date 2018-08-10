@@ -10,8 +10,9 @@
   },
   "scripts": {
     "build-prod": "webpack --config=./script/webpack.config.js --env.production",
-    "build-dev": "webpack --config=./script/webpack.config.js",
+    "build-dev": "webpack --config=./script/webpack.config.js --watch",
     "start": "node ./dist/app.bundle.js",
+    "dev": "node ./dist/app.bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

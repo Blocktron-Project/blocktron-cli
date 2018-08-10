@@ -125,29 +125,44 @@ const run = (script) => {
   });
 }
 
-/**
- * Bootstrap the cli after rendering the logo
- */
-figlet(_BtConfig.name, figletConfig, (err, data) => {
-  if (err) {
-    log('logo rendering failed!: ' + err, 'error');
-  }
+if (process.argv.slice(2).length !== 0) {
+  let option = process.argv.slice(2);
+  console.log(option);
+  // switch (option) {
+  //   case '-he':
+  //     log('Help', 'info');
+  //     break;
+  //   case '--help':
+  //     log('Help', 'info');
+  //   case '-v':
+  //     log(`v${_BtConfig.version}`, 'info');
+  //     break;
+  //   case '--version':
+  //     log(`v${_BtConfig.version}`, 'info');
+  //     break;
+  //   case 'default':
+  //     break;
+  // }
 
+} else {
   /**
-   * render the logo in bold yellow and version in blue
+   * Bootstrap the cli after rendering the logo
    */
-  log(data, 'warn');
-  log(`v${_BtConfig.version}`, 'info');
+  figlet(_BtConfig.name, figletConfig, (err, data) => {
+    if (err) {
+      log('logo rendering failed!: ' + err, 'error');
+    }
 
-  if (process.argv[2]) {
-
-  } else {
+    /**
+     * render the logo in bold yellow and version in blue
+     */
+    log(data, 'warn');
+    log(`v${_BtConfig.version}`, 'info');
     log('\nUsage:', 'info');
-    log('blocktron [options]', 'info');
-    log('\nOptions:', 'info');
-    log('     -h  --help              show cli help', 'info');
-    log('     -v  --version           get cli version', 'info');
-    log('     .                       generate a new blocktron-node instance in the current directory', 'info');
-    log('     <project-name>          generate a new blocktron-node instance with the project name passed in', 'info');
-  }
-});
+    log('blocktron [commands]', 'info');
+    log('\nAvailable Commands:', 'info');
+    log('     help                 show cli help', 'info');
+    log('     version              get cli version', 'info');
+    log('     .                    generate a new blocktron-node instance in the current directory', 'info');
+  });
+}
