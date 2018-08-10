@@ -256,24 +256,15 @@ var run = function run(script) {
   });
 };
 
-if (process.argv.slice(2).length !== 0) {
-  var option = process.argv.slice(2);
-  console.log(option);
-  // switch (option) {
-  //   case '-he':
-  //     log('Help', 'info');
-  //     break;
-  //   case '--help':
-  //     log('Help', 'info');
-  //   case '-v':
-  //     log(`v${_BtConfig.version}`, 'info');
-  //     break;
-  //   case '--version':
-  //     log(`v${_BtConfig.version}`, 'info');
-  //     break;
-  //   case 'default':
-  //     break;
-  // }
+if (process.argv[2].length !== 0) {
+  var option = process.argv[2];
+  if (option === 'help') {
+    log('Help', 'info');
+  } else if (option === 'version') {
+    log('v' + _blocktron2.default.version, 'info');
+  } else {
+    log(option);
+  }
 } else {
   /**
    * Bootstrap the cli after rendering the logo
