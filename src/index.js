@@ -164,5 +164,6 @@ if (process.argv.slice(2).length !== 0) {
     log('     help                 show cli help', 'info');
     log('     version              get cli version', 'info');
     log('     .                    generate a new blocktron-node instance in the current directory', 'info');
+    log('     <project-name>       generate a new blocktron-node instance in the <project-name> directory', 'info');
   });
 }
