@@ -139,7 +139,7 @@ if (process.argv[2] && process.argv[2].length !== 0) {
   } else {
 
     let projectName = option;
-    log(`Building project............... ${projectName}`, 'info');
+    log(`Building project -> ${projectName}..................[START]`, 'info');
 
     /**
      * Check whether git is installed or not and continue.
@@ -157,11 +157,12 @@ if (process.argv[2] && process.argv[2].length !== 0) {
       const gitCommand = `git clone ${URL_SCHEMA.blocktronNode} ${projectName}`;
 
       let clone = exec(gitCommand, (err) => {
+        log('Cloning repo...............................[START]', 'info');
         if (err) {
           log(chalk.red.bold(err));
           process.exit();
         } else {
-          log('Cloning repo...................', 'info');
+          log('Cloning repo...............................[DONE]', 'info');
         }
       });
 

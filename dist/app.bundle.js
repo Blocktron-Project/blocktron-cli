@@ -270,7 +270,7 @@ if (process.argv[2] && process.argv[2].length !== 0) {
   } else {
 
     var projectName = option;
-    log('Building project............... ' + projectName, 'info');
+    log('Building project -> ' + projectName + '..................[START]', 'info');
 
     /**
      * Check whether git is installed or not and continue.
@@ -288,11 +288,12 @@ if (process.argv[2] && process.argv[2].length !== 0) {
       var gitCommand = 'git clone ' + _repoUrls2.default.blocktronNode + ' ' + projectName;
 
       var clone = (0, _child_process.exec)(gitCommand, function (err) {
+        log('Cloning repo...............................[START]', 'info');
         if (err) {
           log(_chalk2.default.red.bold(err));
           process.exit();
         } else {
-          log('Cloning repo...................', 'info');
+          log('Cloning repo...............................[DONE]', 'info');
         }
       });
 
