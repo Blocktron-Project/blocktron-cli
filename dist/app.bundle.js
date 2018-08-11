@@ -262,10 +262,13 @@ if (process.argv[2] && process.argv[2].length !== 0) {
     log('Help', 'info');
   } else if (option === 'version') {
     log('v' + _blocktron2.default.version, 'info');
+  } else if (option.length < 3 || !option.match(/^(\w+\.?)*\w+$/g)) {
+    log('Error: Please provide a valid name with minimum 3 char length', 'error');
   } else {
-    log(option);
+    log('Building project............... ' + option, 'info');
   }
 } else {
+
   /**
    * Bootstrap the cli after rendering the logo
    */
