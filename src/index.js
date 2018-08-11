@@ -154,7 +154,7 @@ if (process.argv[2] && process.argv[2].length !== 0) {
       /**
        * Clone repo
        */
-      const gitCommand = `git clone ${repoUrl} ${projectName}`;
+      const gitCommand = `git clone ${URL_SCHEMA.blocktronNode} ${projectName}`;
 
       let clone = exec(gitCommand, (err) => {
         if (err) {
@@ -162,6 +162,7 @@ if (process.argv[2] && process.argv[2].length !== 0) {
           process.exit();
         }
       });
+
 
     });
   }

@@ -285,7 +285,7 @@ if (process.argv[2] && process.argv[2].length !== 0) {
       /**
        * Clone repo
        */
-      var gitCommand = 'git clone ' + repoUrl + ' ' + projectName;
+      var gitCommand = 'git clone ' + _repoUrls2.default.blocktronNode + ' ' + projectName;
 
       var clone = (0, _child_process.exec)(gitCommand, function (err) {
         if (err) {
