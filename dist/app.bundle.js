@@ -317,7 +317,7 @@ if (process.argv[2] && process.argv[2].length !== 0) {
           //remove LICENSE
           var removeLicense = 'del ' + projectName + '\\LICENSE /s /q';
           //remove travis
-          var removeTravis = 'del ' + projectName + '\\.travis /s /q';
+          var removeTravis = 'del ' + projectName + '\\.travis.yml /s /q';
 
           /**
            * Promisify and execute remove commands.
