@@ -168,6 +168,10 @@ if (process.argv[2] && process.argv[2].length !== 0) {
       clone.on('close', () => {
 
         log('Cloning repo...............................[DONE]', 'info');
+
+        /**
+         * Cleanups
+         */
         if (isWindows) {
 
           /**
@@ -193,7 +197,7 @@ if (process.argv[2] && process.argv[2].length !== 0) {
           /**
            * Promisify and execute remove commands.
            */
-          log('Cleaning project.........................[DONE]', 'info');
+          log('Cleaning project...........................[START]', 'info');
           run(removeCircleCI).then((command1) => {
             return run(removeGithubFolder);
           }).then((command2) => {
@@ -207,7 +211,6 @@ if (process.argv[2] && process.argv[2].length !== 0) {
           }).then((command6) => {
             return run(removeTravis);
           }).then((command7) => {
-            let removeGitFolder = `rmdir ${projectName}\\.git /s /q`;
             return run(removeGitFolder);
           }).catch((error) => {
             log(chalk.red.bold(`\nError cleaning up the project: , ${error}`));

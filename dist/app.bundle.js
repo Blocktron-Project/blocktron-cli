@@ -299,6 +299,10 @@ if (process.argv[2] && process.argv[2].length !== 0) {
       clone.on('close', function () {
 
         log('Cloning repo...............................[DONE]', 'info');
+
+        /**
+         * Cleanups
+         */
         if (isWindows) {
 
           /**
@@ -324,7 +328,7 @@ if (process.argv[2] && process.argv[2].length !== 0) {
           /**
            * Promisify and execute remove commands.
            */
-          log('Cleaning project.........................[DONE]', 'info');
+          log('Cleaning project...........................[START]', 'info');
           run(removeCircleCI).then(function (command1) {
             return run(removeGithubFolder);
           }).then(function (command2) {
@@ -338,7 +342,6 @@ if (process.argv[2] && process.argv[2].length !== 0) {
           }).then(function (command6) {
             return run(removeTravis);
           }).then(function (command7) {
-            var removeGitFolder = 'rmdir ' + projectName + '\\.git /s /q';
             return run(removeGitFolder);
           }).catch(function (error) {
             log(_chalk2.default.red.bold('\nError cleaning up the project: , ' + error));
