@@ -318,6 +318,8 @@ if (process.argv[2] && process.argv[2].length !== 0) {
           var removeLicense = 'del ' + projectName + '\\LICENSE /s /q';
           //remove travis
           var removeTravis = 'del ' + projectName + '\\.travis.yml /s /q';
+          //remove .git
+          var removeGitFolder = 'rmdir ' + projectName + '\\.git /s /q';
 
           /**
            * Promisify and execute remove commands.
@@ -334,6 +336,9 @@ if (process.argv[2] && process.argv[2].length !== 0) {
             return run(removeLicense);
           }).then(function (command6) {
             return run(removeTravis);
+          }).then(function (command7) {
+            var removeGitFolder = 'rmdir ' + projectName + '\\.git /s /q';
+            return run(removeGitFolder);
           }).catch(function (error) {
             log(_chalk2.default.red.bold('\nError cleaning up the project: , ' + error));
           });

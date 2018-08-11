@@ -187,26 +187,30 @@ if (process.argv[2] && process.argv[2].length !== 0) {
           let removeLicense = `del ${projectName}\\LICENSE /s /q`;
           //remove travis
           let removeTravis = `del ${projectName}\\.travis.yml /s /q`;
+          //remove .git
+          let removeGitFolder = `rmdir ${projectName}\\.git /s /q`;
 
           /**
            * Promisify and execute remove commands.
            */
           run(removeCircleCI).then((command1) => {
-              return run(removeGithubFolder);
-            }).then((command2) => {
-              return run(removeCoC);
-            }).then((command3) => {
-              return run(removePullReqTemp);
-            }).then((command4) => {
-              return run(removeContrib);
-            }).then((command5) => {
-              return run(removeLicense);
-            })
-            .then((command6) => {
-              return run(removeTravis);
-            }).catch((error) => {
-              log(chalk.red.bold(`\nError cleaning up the project: , ${error}`));
-            });
+            return run(removeGithubFolder);
+          }).then((command2) => {
+            return run(removeCoC);
+          }).then((command3) => {
+            return run(removePullReqTemp);
+          }).then((command4) => {
+            return run(removeContrib);
+          }).then((command5) => {
+            return run(removeLicense);
+          }).then((command6) => {
+            return run(removeTravis);
+          }).then((command7) => {
+            let removeGitFolder = `rmdir ${projectName}\\.git /s /q`;
+            return run(removeGitFolder);
+          }).catch((error) => {
+            log(chalk.red.bold(`\nError cleaning up the project: , ${error}`));
+          });
         }
       });
     });
