@@ -125,7 +125,7 @@ const run = (script) => {
   });
 }
 
-if (process.argv[2].length !== 0) {
+if (process.argv[2] && process.argv[2].length !== 0) {
   let option = process.argv[2];
   if (option === 'help') {
     log('Help', 'info');

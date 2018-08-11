@@ -256,7 +256,7 @@ var run = function run(script) {
   });
 };
 
-if (process.argv[2].length !== 0) {
+if (process.argv[2] && process.argv[2].length !== 0) {
   var option = process.argv[2];
   if (option === 'help') {
     log('Help', 'info');
