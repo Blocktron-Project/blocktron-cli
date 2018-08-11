@@ -164,9 +164,9 @@ if (process.argv[2] && process.argv[2].length !== 0) {
           log('Cloning repo.....................', 'info');
         }
       });
+
       clone.on('close', () => {
-        //Stop progress bar
-        progress.stop();
+       
         log(chalk.green(`\nProject files downloaded successfully.`));
         if (isWindows) {
 
