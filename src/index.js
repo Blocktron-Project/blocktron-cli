@@ -156,8 +156,9 @@ if (process.argv[2] && process.argv[2].length !== 0) {
        */
       const gitCommand = `git clone ${URL_SCHEMA.blocktronNode} ${projectName}`;
 
+      log('Cloning repo...............................[START]', 'info');
       let clone = exec(gitCommand, (err) => {
-        log('Cloning repo...............................[START]', 'info');
+        
         if (err) {
           log(chalk.red.bold(err));
           process.exit();
@@ -165,15 +166,15 @@ if (process.argv[2] && process.argv[2].length !== 0) {
       });
 
       clone.on('close', () => {
-       
+    
         log('Cloning repo...............................[DONE]', 'info');
         if (isWindows) {
 
           /**
            * Cleanup project folder in WINDOWS.
            */
-          //remove .git directory
-          let removeGitFolder = `rmdir ${projectName}\\.git /s /q`;
+          //remove circle ci folder
+          let removeCircleCI = `rmdir ${projectName}\\.circleci /s /q`;
           //remove .github folder
           let removeGithubFolder = `rmdir ${projectName}\\.github /s /q`;
           //remove CODE_OF_CONDUCT.md
@@ -188,7 +189,7 @@ if (process.argv[2] && process.argv[2].length !== 0) {
           /**
            * Promisify and execute remove commands.
            */
-          run(removeGitFolder).then((command1) => {
+          run(removeCircleCI).then((command1) => {
             return run(removeGithubFolder);
           }).then((command2) => {
             return run(removeCoC);

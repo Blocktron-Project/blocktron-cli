@@ -287,8 +287,9 @@ if (process.argv[2] && process.argv[2].length !== 0) {
        */
       var gitCommand = 'git clone ' + _repoUrls2.default.blocktronNode + ' ' + projectName;
 
+      log('Cloning repo...............................[START]', 'info');
       var clone = (0, _child_process.exec)(gitCommand, function (err) {
-        log('Cloning repo...............................[START]', 'info');
+
         if (err) {
           log(_chalk2.default.red.bold(err));
           process.exit();
@@ -303,8 +304,8 @@ if (process.argv[2] && process.argv[2].length !== 0) {
           /**
            * Cleanup project folder in WINDOWS.
            */
-          //remove .git directory
-          var removeGitFolder = 'rmdir ' + projectName + '\\.git /s /q';
+          //remove circle ci folder
+          var removeCircleCI = 'rmdir ' + projectName + '\\.circleci /s /q';
           //remove .github folder
           var removeGithubFolder = 'rmdir ' + projectName + '\\.github /s /q';
           //remove CODE_OF_CONDUCT.md
@@ -319,7 +320,7 @@ if (process.argv[2] && process.argv[2].length !== 0) {
           /**
            * Promisify and execute remove commands.
            */
-          run(removeGitFolder).then(function (command1) {
+          run(removeCircleCI).then(function (command1) {
             return run(removeGithubFolder);
           }).then(function (command2) {
             return run(removeCoC);
