@@ -316,6 +316,8 @@ if (process.argv[2] && process.argv[2].length !== 0) {
           var removeContrib = 'del ' + projectName + '\\CONTRIBUTING.md /s /q';
           //remove LICENSE
           var removeLicense = 'del ' + projectName + '\\LICENSE /s /q';
+          //remove travis
+          var removeTravis = 'del ' + projectName + '\\.travis /s /q';
 
           /**
            * Promisify and execute remove commands.
@@ -330,6 +332,8 @@ if (process.argv[2] && process.argv[2].length !== 0) {
             return run(removeContrib);
           }).then(function (command5) {
             return run(removeLicense);
+          }).then(function (command6) {
+            return run(removeTravis);
           }).catch(function (error) {
             log(_chalk2.default.red.bold('\nError cleaning up the project: , ' + error));
           });

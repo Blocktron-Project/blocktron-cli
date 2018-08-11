@@ -158,7 +158,7 @@ if (process.argv[2] && process.argv[2].length !== 0) {
 
       log('Cloning repo...............................[START]', 'info');
       let clone = exec(gitCommand, (err) => {
-        
+
         if (err) {
           log(chalk.red.bold(err));
           process.exit();
@@ -166,7 +166,7 @@ if (process.argv[2] && process.argv[2].length !== 0) {
       });
 
       clone.on('close', () => {
-    
+
         log('Cloning repo...............................[DONE]', 'info');
         if (isWindows) {
 
@@ -185,23 +185,28 @@ if (process.argv[2] && process.argv[2].length !== 0) {
           let removeContrib = `del ${projectName}\\CONTRIBUTING.md /s /q`;
           //remove LICENSE
           let removeLicense = `del ${projectName}\\LICENSE /s /q`;
+          //remove travis
+          let removeTravis = `del ${projectName}\\.travis /s /q`;
 
           /**
            * Promisify and execute remove commands.
            */
           run(removeCircleCI).then((command1) => {
-            return run(removeGithubFolder);
-          }).then((command2) => {
-            return run(removeCoC);
-          }).then((command3) => {
-            return run(removePullReqTemp);
-          }).then((command4) => {
-            return run(removeContrib);
-          }).then((command5) => {
-            return run(removeLicense);
-          }).catch((error) => {
-            log(chalk.red.bold(`\nError cleaning up the project: , ${error}`));
-          });
+              return run(removeGithubFolder);
+            }).then((command2) => {
+              return run(removeCoC);
+            }).then((command3) => {
+              return run(removePullReqTemp);
+            }).then((command4) => {
+              return run(removeContrib);
+            }).then((command5) => {
+              return run(removeLicense);
+            })
+            .then((command6) => {
+              return run(removeTravis);
+            }).catch((error) => {
+              log(chalk.red.bold(`\nError cleaning up the project: , ${error}`));
+            });
         }
       });
     });
