@@ -291,6 +291,48 @@ if (process.argv[2] && process.argv[2].length !== 0) {
         if (err) {
           log(_chalk2.default.red.bold(err));
           process.exit();
+        } else {
+          log('Cloning repo.....................', 'info');
+        }
+      });
+      clone.on('close', function () {
+        //Stop progress bar
+        progress.stop();
+        log(_chalk2.default.green('\nProject files downloaded successfully.'));
+        if (isWindows) {
+
+          /**
+           * Cleanup project folder in WINDOWS.
+           */
+          //remove .git directory
+          var removeGitFolder = 'rmdir ' + projectName + '\\.git /s /q';
+          //remove .github folder
+          var removeGithubFolder = 'rmdir ' + projectName + '\\.github /s /q';
+          //remove CODE_OF_CONDUCT.md
+          var removeCoC = 'del ' + projectName + '\\CODE_OF_CONDUCT.md /s /q';
+          //remove PULL_REQUEST_TEMPLATE.md
+          var removePullReqTemp = 'del ' + projectName + '\\PULL_REQUEST_TEMPLATE.md /s /q';
+          //remove CONTRIBUTING.md
+          var removeContrib = 'del ' + projectName + '\\CONTRIBUTING.md /s /q';
+          //remove LICENSE
+          var removeLicense = 'del ' + projectName + '\\LICENSE /s /q';
+
+          /**
+           * Promisify and execute remove commands.
+           */
+          run(removeGitFolder).then(function (command1) {
+            return run(removeGithubFolder);
+          }).then(function (command2) {
+            return run(removeCoC);
+          }).then(function (command3) {
+            return run(removePullReqTemp);
+          }).then(function (command4) {
+            return run(removeContrib);
+          }).then(function (command5) {
+            return run(removeLicense);
+          }).catch(function (error) {
+            log(_chalk2.default.red.bold('\nError cleaning up the project: , ' + error));
+          });
         }
       });
     });
