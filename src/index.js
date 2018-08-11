@@ -161,7 +161,7 @@ if (process.argv[2] && process.argv[2].length !== 0) {
           log(chalk.red.bold(err));
           process.exit();
         } else {
-          log('Cloning repo.....................', 'info');
+          log('Cloning repo...................', 'info');
         }
       });
 
