@@ -259,13 +259,41 @@ var run = function run(script) {
 if (process.argv[2] && process.argv[2].length !== 0) {
   var option = process.argv[2];
   if (option === 'help') {
+
     log('Help', 'info');
   } else if (option === 'version') {
+
     log('v' + _blocktron2.default.version, 'info');
   } else if (option.length < 3 || !option.match(/^(\w+\.?)*\w+$/g)) {
+
     log('Error: Please provide a valid name with minimum 3 char length', 'error');
   } else {
-    log('Building project............... ' + option, 'info');
+
+    var projectName = option;
+    log('Building project............... ' + projectName, 'info');
+
+    /**
+     * Check whether git is installed or not and continue.
+     */
+    var checkGit = 'git';
+    (0, _child_process.exec)(checkGit, function (data) {
+      if (!data) {
+        log(_chalk2.default.red.bold('\nError: Git is not installed'));
+        process.exit();
+      }
+
+      /**
+       * Clone repo
+       */
+      var gitCommand = 'git clone ' + repoUrl + ' ' + projectName;
+
+      var clone = (0, _child_process.exec)(gitCommand, function (err) {
+        if (err) {
+          log(_chalk2.default.red.bold(err));
+          process.exit();
+        }
+      });
+    });
   }
 } else {
 

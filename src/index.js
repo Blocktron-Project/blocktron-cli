@@ -128,13 +128,42 @@ const run = (script) => {
 if (process.argv[2] && process.argv[2].length !== 0) {
   let option = process.argv[2];
   if (option === 'help') {
+
     log('Help', 'info');
   } else if (option === 'version') {
+
     log(`v${_BtConfig.version}`, 'info');
   } else if (option.length < 3 || !option.match(/^(\w+\.?)*\w+$/g)) {
+
     log(`Error: Please provide a valid name with minimum 3 char length`, 'error');
   } else {
-    log(`Building project............... ${option}`, 'info');
+
+    let projectName = option;
+    log(`Building project............... ${projectName}`, 'info');
+
+    /**
+     * Check whether git is installed or not and continue.
+     */
+    let checkGit = `git`;
+    exec(checkGit, (data) => {
+      if (!data) {
+        log(chalk.red.bold(`\nError: Git is not installed`));
+        process.exit();
+      }
+
+      /**
+       * Clone repo
+       */
+      const gitCommand = `git clone ${repoUrl} ${projectName}`;
+
+      let clone = exec(gitCommand, (err) => {
+        if (err) {
+          log(chalk.red.bold(err));
+          process.exit();
+        }
+      });
+
+    });
   }
 } else {
 
