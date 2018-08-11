@@ -292,14 +292,12 @@ if (process.argv[2] && process.argv[2].length !== 0) {
         if (err) {
           log(_chalk2.default.red.bold(err));
           process.exit();
-        } else {
-          log('Cloning repo...............................[DONE]', 'info');
         }
       });
 
       clone.on('close', function () {
 
-        log(_chalk2.default.green('\nProject files downloaded successfully.'));
+        log('Cloning repo...............................[DONE]', 'info');
         if (isWindows) {
 
           /**

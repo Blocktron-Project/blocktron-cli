@@ -161,14 +161,12 @@ if (process.argv[2] && process.argv[2].length !== 0) {
         if (err) {
           log(chalk.red.bold(err));
           process.exit();
-        } else {
-          log('Cloning repo...............................[DONE]', 'info');
         }
       });
 
       clone.on('close', () => {
        
-        log(chalk.green(`\nProject files downloaded successfully.`));
+        log('Cloning repo...............................[DONE]', 'info');
         if (isWindows) {
 
           /**
