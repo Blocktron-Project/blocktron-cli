@@ -193,6 +193,7 @@ if (process.argv[2] && process.argv[2].length !== 0) {
           /**
            * Promisify and execute remove commands.
            */
+          log('Cleaning project.........................[DONE]', 'info');
           run(removeCircleCI).then((command1) => {
             return run(removeGithubFolder);
           }).then((command2) => {
